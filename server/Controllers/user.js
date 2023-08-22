@@ -47,7 +47,7 @@ export const getUser = async (req, res, next) => {
 // Subscriber User
 export const subscribeUser = async (req, res, next) => {
 	try {
-		await User.findById(req.user.id, {
+		await User.findByIdAndUpdate(req.user.id, {
 			$push: { subscribeUser: req.params.id }
 		})
 		await User.findByIdAndUpdate(req.params.id, {
